@@ -23,7 +23,7 @@ jobs:
         git push -f -u origin release
 
     - name: Mezclar main -> release
-      uses: tukasz/direct-merge-action@master
+      uses: tukasz/direct-merge-action@v2.0.2
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         source-branch: main
