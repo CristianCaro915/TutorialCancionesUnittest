@@ -15,6 +15,11 @@ jobs:
     - name: Checkout del repositorio
       uses: actions/checkout@v2
 
+    - name: Setup Git
+      run: |
+        git config --global user.name "CritianCaro915"
+        git config --global user.email "c.caro@uniandes.edu.co"
+
     - name: Crear rama release desde main
       run: |
         git checkout main
