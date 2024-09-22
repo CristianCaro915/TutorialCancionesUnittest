@@ -14,11 +14,13 @@ jobs:
     steps:
     - name: Checkout del repositorio
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Git
       run: |
-        git config --global user.name "CritianCaro915"
-        git config --global user.email "c.caro@uniandes.edu.co"
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
     - name: Crear rama release desde main
       run: |
