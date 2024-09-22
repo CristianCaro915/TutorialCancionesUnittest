@@ -17,10 +17,8 @@ jobs:
 
     - name: Configurar Git
       run: |
-        git config user.name "CristianCaro915"
-        git config user.email "c.caro@uniandes.edu.co"
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/CristianCaro915/TutorialCancionesUnittest.git
-        git push origin release
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
     - name: Crear rama release desde main
       run: |
