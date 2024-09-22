@@ -1,0 +1,35 @@
+name: Release Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-release:
+    name: Crear rama release y mezclar con master
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.message, 'release') }}
+    
+    steps:
+    - name: Checkout del repositorio
+      uses: actions/checkout@v2
+
+    - name: Configurar Git
+      run: |
+        git config user.name "CristianCaro915"
+        git config user.email "c.caro@uniandes.edu.co"
+
+    - name: Crear rama release desde main
+      run: |
+        git checkout main
+        git pull origin main
+        git checkout -b release
+        git push -f -u origin release
+
+    - name: Mezclar main -> release
+      uses: tukasz/direct-merge-action@master
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        source-branch: main
+        target-branch: release
