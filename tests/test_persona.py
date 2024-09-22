@@ -2,7 +2,7 @@ import unittest
 import datetime
 from src.modelo.persona import Persona
 
-
+# A commentary was added to make the PR. Part 2 using name main.
 class PersonaTestCase(unittest.TestCase):
 
    def setUp(self):
