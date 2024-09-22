@@ -14,8 +14,6 @@ jobs:
     steps:
     - name: Checkout del repositorio
       uses: actions/checkout@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup Git
       run: |
@@ -27,11 +25,10 @@ jobs:
         git checkout main
         git pull origin main
         git checkout -b release
-        git push -f -u origin release
+        git push -u origin release
 
     - name: Mezclar main -> release
-      uses: tukasz/direct-merge-action@v2.0.2
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        source-branch: main
-        target-branch: release
+      run: |
+        git checkout release
+        git merge main
+        git push origin release
